@@ -8,7 +8,7 @@ app.get('/', function (req, res) {
 	res.send('hi lol');
 });
 
-app.listen(3000);
+app.listen(80);
 
 
 var insertEntry = function (db, callback) {
