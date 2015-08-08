@@ -32,6 +32,16 @@ app.get('/get_state', function (req, res) {
     });
 });
 
+
+app.get('/delete_state', function (req, res) {
+    var url = 'mongodb://localhost:27017/myproject';
+    MongoClient.connect(url, function (err, db) {
+        assert.equal(null, err);
+        deleteUser(db, req.query, function () {
+            db.close();
+        });
+    });
+});
 app.listen(80);
 
 //setUser: sets user based on query
@@ -69,13 +79,6 @@ var setUser = function (db, query, callback) {
 
     }
 
-//    last_updated: (time in ms), 
-//    battery level: (decimal),
-//    orig_lat: 234,
-//    orig_lon: 435,
-//    d_lat: 3,
-//    d_lon: 2,
-
 
     });
 
@@ -96,4 +99,15 @@ var getUser = function(db, query, res, callback) {
         }
         callback();
     })
+}
+
+var deleteUser = function(db, query, callback) {
+    var collection = db.collection('users');
+    collection.deleteMany(
+        {'name' : query['name']},
+        function (err, results) {
+            console.log(results);
+            callback();
+        }
+    );
 }
