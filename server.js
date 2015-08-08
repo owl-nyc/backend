@@ -10,8 +10,15 @@ MongoClient.connect(url, function (err, db) {
 
 	db.close();
 });
+
+
+// create server
 http.createServer(function (req, res) {
+  console.log('%d request received\n', process.pid);
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end('Hello World\n');
-}).listen(3000, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:1337/');
+}).listen(80);
+
+console.log('Server listening on port 80\n');
+
+
