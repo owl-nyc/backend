@@ -8,6 +8,9 @@ app.get('/', function (req, res) {
 	res.send('hi lol');
 });
 
+app.listen(3000);
+
+
 var insertEntry = function (db, callback) {
 	var collection = db.collection('users');
 
@@ -42,16 +45,8 @@ MongoClient.connect(url, function (err, db) {
 	console.log('connected to mongodb server correctly');
 	insertEntry(db, function () {
 		updateEntry(db, function () {
-			removeEntry(db, function () {
-				findDocuments(db, function () {
-					db.close();	
-				});
-			});
+			db.close();	
 		});
 	});
 });
 
-
-http.listen(3000, function () {
-	console.log('Server running at http://127.0.0.1:3000/');
-});
