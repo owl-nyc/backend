@@ -1,24 +1,57 @@
 var http = require('http'),
 	MongoClient = require('mongodb').MongoClient,
-	assert = require('assert');
+	assert = require('assert'),
+	express = require('express'),
+	app = express();
+
+app.get('/', function (req, res) {
+	res.send('hi lol');
+});
+
+var insertEntry = function (db, callback) {
+	var collection = db.collection('users');
+
+	collection.insert([ 
+		{a : 1}, {a : 2}, {a: 3}
+	], function (err, result) {
+		assert.equal(err, null);
+		assert.equal(3, result.result.n);
+		assert.equal(3, result.ops.length);
+		console.log('lol inserted those documents chief');
+		callback(result);
+	});
+}
+
+var updateEntry = function(db, callback) {
+  // Get the documents collection
+  var collection = db.collection('users');
+  // Update document where a is 2, set b equal to 1
+  collection.update({ a : 2 }
+    , { $set: { b : 1 } }, function(err, result) {
+    assert.equal(err, null);
+    assert.equal(1, result.result.n);
+    console.log("Updated the document with the field a equal to 2");
+    callback(result);
+  }); 
+}
 
 //mongodb connection url
 var url = 'mongodb://localhost:27017/myproject';
 MongoClient.connect(url, function (err, db) {
 	assert.equal(null, err);
 	console.log('connected to mongodb server correctly');
-
-	db.close();
+	insertEntry(db, function () {
+		updateEntry(db, function () {
+			removeEntry(db, function () {
+				findDocuments(db, function () {
+					db.close();	
+				});
+			});
+		});
+	});
 });
 
 
-// create server
-http.createServer(function (req, res) {
-  console.log('%d request received\n', process.pid);
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-}).listen(80);
-
-console.log('Server listening on port 80\n');
-
-
+http.listen(3000, function () {
+	console.log('Server running at http://127.0.0.1:3000/');
+});
