@@ -1,17 +1,29 @@
 <DOCTYPE! html>
 <head>
     <title></title>
-
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
     <style type="text/css">
-
-    h1, h2, span{
+    body {
+        background: #fff;
+        margin: 0px;
+        padding: 0px;
+    }
+    input { background: rgba(0,0,0,0);}
+    h1 { 
+        margin-top: 40px;
+        padding: 0;
+        font-family: 'Patua One', sans-serif;
+        color: #232325;        
+    }
+    h2, span{
         margin: 0;
         padding: 0;
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Patua One', sans-serif;
+        color: #232325;
     }
 
     h1, h2 {
@@ -47,8 +59,87 @@
 
 
 
+    .paypal-button{
+        background: rgba(0,0,0,0);
+        border-radius: none;
+    }
+    form button {
+        background: rgba(0,0,0,0);
+    }
+    #button-parent {
+        width: 230px;
+        height: 50px;
+        text-align: center;
+    }
+    .paypal-button button.large{
+        font-size: 30px;
+        padding: none;
+        border: 3px solid #255898;
+        border-left: 2px solid #255898;
+        border-left: 2px solid #255898;  
+        background: rgba(0,0,0,0);      
+    }
+    .paypal-button button {
+        margin-top: 15px;
+        background: rgba(0,0,0,0) !important;
+        border: #fff;
+        color: #255898;     
+        border-radius: 0 !important;
+        font-style: normal !important;
+        text-shadow: none;
+        margin: 10px auto;
+        font-size: 30px;
+    }
+    .paypal-button button:after {
+        background: rgba(0,0,0,0);
+        color: #255898;     
+        font-style: none !important;
+        width: 200px;
+        font-size: 30px;        
+    }
+    .paypal-button button:before {
+        background: rgba(0,0,0,0); 
+        border-radius: 0px;
+        font-style: none !important;
+        width: 200px;
+        font-size: 30px;        
+    }
 
-
+    #target, #amount {
+        border: none;
+        border-bottom: 2px solid #000;
+        padding-top: 30px;
+        padding-left: 10px;
+        font-weight: bold;
+        font-size: 18px;   
+        height: 50px;
+        vertical-align: bottom;
+    }
+    #holla {
+        font-size: 30px;
+    }
+    #amount {
+        padding-top: 19px;
+        padding-left: 5px;
+        height: 50px;
+        width: 222px;
+        font-size: 30px;
+    }
+    #target:focus, #amount:focus{
+        outline-width: 0;
+    }
+    #logo-container {
+        margin: 0px;
+        background: #986d5f;
+        height: 280px;
+        width: 100%;
+        text-align: center;
+        padding: 0px;
+    }
+    #city-logo {
+        width: 280px;
+        height: 280px;
+    }
     </style>
 
     <h1>Had fun last night?</h1>
@@ -58,17 +149,18 @@
 
     <div id="table-container"><table>
         <tr>
-            <input id="target"  onblur="change()" placeholder="your Watch's email">
+            <input id="target"  onblur="change()" placeholder="YourWatch@email.com">
 
             </input>
         </tr>
 
         <tr>
-            <td><span>$</span><input id="amount" placeholder="tip amount">
+            <td><span id='holla'>$</span><input id="amount" placeholder="0.00">
 
             </input></td>
-
-            <td>
+        </tr>
+        <tr> 
+            <td id='button-parent'>
                 <script src="paypal-button.min.js?merchant=VjiaoBlack@gmail.com"
                     data-button="donate"
                     data-name="A tip for watching over me and making sure I'm okay."
@@ -76,9 +168,11 @@
                     async
                 ></script>
             </td>
-
         </tr>
     </table></div>
+    <div id='logo-container'>
+        <img id='city-logo' src='city.png'/>
+    </div>
 
 
 </body>

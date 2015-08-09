@@ -83,7 +83,7 @@ app.get('/pay', function(req, res) {
     res.sendFile('public/pay.html', {'root': __dirname});
 
 });
-app.listen(80);
+app.listen(3000);
 
 
 var addWatch = function (db, query, callback) {
