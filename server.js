@@ -15,7 +15,7 @@ app.get('/set_state', function (req, res) {
         assert.equal(null, err);
         setUser(db, req.query, function () {
             db.close();
-            console.log('success lols');            
+            res.send('success lols');            
         });
     }); 
 });
@@ -39,6 +39,7 @@ app.get('/delete_state', function (req, res) {
         assert.equal(null, err);
         deleteUser(db, req.query, function () {
             db.close();
+            res.send('delete_state: success lols');
         });
     });
 });
