@@ -205,7 +205,7 @@ var getUser = function(db, query, res, callback) {
                 }
 
                 // battery 
-                if (data['battery_level'] < GLOBAL_BATTERY_MIN) {
+                if (data['battery_level'] >= 0 && data['battery_level'] < GLOBAL_BATTERY_MIN) {
                     data['alerts'].push('battery');
                 }
                 if (util.outOfBounds(data['orig_lat'], data['orig_lon'], 
