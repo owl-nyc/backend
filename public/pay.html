@@ -4,14 +4,13 @@
 </head>
 <body>
 
-    <input id="target">
+    <input id="target" onblur="change()">
 
     </input>
 
-    <button onclick="change()">
-        Change Business
-    </button>
-<script src="paypal-button.min.js?merchant=VjiaoBlack@gmail.com"
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="paypal-button.min.js?merchant=brennanhking@gmail.com"
+    as
     data-button="donate"
     data-name="A tip for watching over me and making sure I'm okay."
     data-amount="1.00"
