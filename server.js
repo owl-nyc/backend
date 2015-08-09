@@ -43,7 +43,7 @@ app.get('/delete_state', function (req, res) {
         });
     });
 });
-app.listen(80);
+app.listen(3000);
 
 //setUser: sets user based on query
 var setUser = function (db, query, callback) {
@@ -112,3 +112,9 @@ var deleteUser = function(db, query, callback) {
         }
     );
 }
+
+//website lul
+app.use(express.static('public'));
+app.get('/l33tH4XX0r', function (req, res) {
+    res.sendFile('public/index.html', {'root': __dirname});
+});
