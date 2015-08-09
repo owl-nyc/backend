@@ -15,7 +15,7 @@ set\_state: sets the state of a user in the database
 
 **Example:** (need to change localhost to actual server but can't remember)
 
-http://localhost:3000/set_state?name=Brennan&lat=90&lon=94&battery_level=.50
+http://agnok.com/set_state?name=Brennan&lat=90&lon=94&battery_level=.50
 
 ### get_state:
 set\_state: retrieves the state of a user in the database
@@ -26,7 +26,7 @@ set\_state: retrieves the state of a user in the database
 
 **Example:** (need to change localhost to actual server but can't remember)
 
-http://localhost:3000/get_state?name=Brennan
+http://agnok.com/get_state?name=Brennan
 
 ### delete_state:
 delete\_state: deletes the state of a user in the database
@@ -35,5 +35,5 @@ delete\_state: deletes the state of a user in the database
 
 **Example:** (need to change localhost to actual server but can't remember)
 
-http://localhost:3000/delete_state?name=Brennan
+http://agnok.com/delete_state?name=Brennan
 
